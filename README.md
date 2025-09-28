@@ -6,7 +6,7 @@ The project is built around a chained AI pipeline to ensure data **accuracy**, *
 
 ---
 
-## 🏗️ Architecture and Code Organization
+##  Architecture and Code Organization
 
 The system is split into two distinct, independently managed services: a high-performance Express API and a modular React client.
 
@@ -29,7 +29,7 @@ The system is split into two distinct, independently managed services: a high-pe
 
 ---
 
-## 🧠 AI Methodology: Chaining and Prompt Engineering
+## AI Methodology: Chaining and Prompt Engineering
 
 This system employs a **multi-step chaining pattern** to ensure the output is correct (schema adherence) and safe (hallucination prevention).
 
@@ -52,7 +52,7 @@ The AI steps utilize advanced prompt engineering techniques for high-fidelity ou
 
 ---
 
-## ⚙️ Setup and Local Execution
+##  Setup and Local Execution
 
 ### Prerequisites
 
@@ -64,8 +64,8 @@ The AI steps utilize advanced prompt engineering techniques for high-fidelity ou
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [YOUR GITHUB REPO LINK HERE]
-    cd Plum # or your project root folder
+    git clone https://github.com/Shivam-KumarSingh/ai_powered_medicalTest_report_analyser
+    
     ```
 
 2.  **Install Server & Client Dependencies:**
@@ -74,8 +74,10 @@ The AI steps utilize advanced prompt engineering techniques for high-fidelity ou
     npm install
     
     # Install client dependencies and build the frontend (creates /frontend/assets)
-    npm install --prefix frontend
-    npm run build --prefix frontend
+    cd frontend
+    npm i
+    npm run build
+    cd ..
     ```
 
 3.  **Run Server:**
@@ -103,7 +105,7 @@ Processes input (text or file) and returns the structured analysis.
 ### A. Sample Request 1: Text Input (Testing Normalization)
 
 ```bash
-curl -X POST http://localhost:5500/api/simplify-report \
+curl -X POST https://ai-powered-medicaltest-report-analyser.onrender.com/api/simplify-report \
   -H "Content-Type: multipart/form-data" \
   -F 'text=Patient labs show WBC 14.5 (ref 4.5-11.0), Total Cholesterol 220 mg/dL, and Hemoglobin 14 g/dL. All other values normal.'
 
@@ -111,7 +113,7 @@ curl -X POST http://localhost:5500/api/simplify-report \
 ### B. Sample Request 2: File Input (Testing OCR Pipeline)
 ```bash
 
-curl -X POST http://localhost:5500/api/simplify-report \
+curl -X POST https://ai-powered-medicaltest-report-analyser.onrender.com/api/simplify-report \
   -H "Content-Type: multipart/form-data" \
   -F 'file=@/path/to/your/report_image.png;type=image/png'
 
@@ -138,5 +140,8 @@ curl -X POST http://localhost:5500/api/simplify-report \
 }
 ```
 
+#### Live API  
 
-## Live Demo Instance	   https://ai-powered-medicaltest-report-analyser.onrender.com/     
+#### Live website Demo Instance
+https://ai-powered-medicaltest-report-analyser.onrender.com/
+
