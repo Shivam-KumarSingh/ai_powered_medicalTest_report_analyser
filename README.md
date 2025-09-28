@@ -153,7 +153,8 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
 }
 ```
 
-#### Live API  
+#### API Link :
+https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report
 
 #### Live website Demo Instance
 https://ai-powered-medicaltest-report-analyser.onrender.com/
