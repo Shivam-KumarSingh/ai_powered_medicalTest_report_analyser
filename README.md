@@ -385,6 +385,31 @@ If hallucination detected, returns status: "unprocessed".
 ##### Error Handling:
 
 All errors return JSON with status: "error" and a descriptive message.
+#### Project Structure
+```bash
+.
+├── server.js
+├── package.json
+├── .env
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── routes/
+│   ├── services/
+│   │   ├── ai/
+│   └── utils/
+├── frontend/
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   ├── components/
+│   │   └── hooks/
+│   └── assets/
+```
 
 #### API Endpoint For testing :
 #### Use This Link For API Testing in postman or anywhere
