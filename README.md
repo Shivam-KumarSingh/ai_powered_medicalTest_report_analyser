@@ -370,7 +370,7 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
   "normalizationConfidence": "number (LLM confidence)"
 }
 ```
-###### If guardrail is triggered:
+##### If guardrail is triggered:
 ```bash
 {
   "status": "unprocessed",
@@ -378,11 +378,11 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
 }
 ```
 #### Guardrails & Error Handling
-###### Guardrails:
+##### Guardrails:
 
 Checks if all normalized test names are present in the raw input (substring or AI validation).
 If hallucination detected, returns status: "unprocessed".
-###### Error Handling:
+##### Error Handling:
 
 All errors return JSON with status: "error" and a descriptive message.
 
