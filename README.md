@@ -120,17 +120,15 @@ Processes input (text or file) and returns the structured analysis.
 ### A. Sample Request 1: Text Input (Testing Normalization)
 
 ```bash
-curl -X POST https://ai-powered-medicaltest-report-analyser.onrender.com/api/simplify-report \
-  -H "Content-Type: multipart/form-data" \
-  -F 'text=Patient labs show WBC 14.5 (ref 4.5-11.0), Total Cholesterol 220 mg/dL, and Hemoglobin 14 g/dL. All other values normal.'
+curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report' \
+--form 'text="CBC: Hemoglobin 10.2 g/dL (Low), WBC 11,200 /uL (High)"'
 
 ```
 ### B. Sample Request 2: File Input (Testing OCR Pipeline)
 ```bash
 
-curl -X POST https://ai-powered-medicaltest-report-analyser.onrender.com/api/simplify-report \
-  -H "Content-Type: multipart/form-data" \
-  -F 'file=@/path/to/your/report_image.png;type=image/png'
+curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report' \
+--form 'file=@"/home/shivam/Pictures/Screenshots/Screenshot from 2025-09-27 11-57-05.png"'
 
 ```
 
