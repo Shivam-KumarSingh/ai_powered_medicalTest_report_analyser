@@ -37,7 +37,7 @@ This system employs a **multi-step chaining pattern** to ensure the output is co
 
 All primary AI logic uses **Gemini 2.5 Flash** (`gemini-2.5-flash-preview-05-20`) for its low latency and superior adherence to JSON output schemas.
 
-* **Temperature:** Consistently set to **0.1** to ensure deterministic, fact-based output.
+* **Temperature:** Consistently set to **0.2** to ensure deterministic, fact-based output.
 * **System Instructions:** Used for **Role-Fixing** (e.g., "Act as a clinical data normalization engine...") to maintain the required persona.
 
 ### Prompting Techniques and Refinements
@@ -46,11 +46,26 @@ The AI steps utilize advanced prompt engineering techniques for high-fidelity ou
 
 | Step | Goal & Technique | Description & Refinement |
 | :--- | :--- | :--- |
-| **Normalization** | **Goal:** Extract accurate JSON schema (`tests` array) from unstructured OCR text. | **Craft Method & One-Shot Prompting:** A highly detailed **System Instruction** defines the exact output schema. A **One-Shot Example** (input ➞ perfect structured JSON) is provided in the prompt payload to train the model instantly on the expected structure, improving parsing reliability. |
-| **Guardrail/Validation** | **Goal:** Prevent AI **hallucination** (fabricating results not in the original report). | **Validation Check:** The system runs a programmatic check comparing the normalized tests against the original raw text. The LLM is used in this stage to define boundaries and flags for suspicious content. If the check fails, the pipeline returns a specific `unprocessed` status. |
-| **Summarization** | **Goal:** Translate technical data into patient-friendly language. | **Role-Fixing & Few-Shot:** The model's role is fixed as a "Patient Advocate/Educator." **Few-Shot examples** demonstrate the required tone (empathetic, non-diagnostic) and structure (summary + bulleted explanations), ensuring the output is safe and clear. |
+| **Normalization** | **Goal:** Extract accurate JSON schema (`tests` array) from unstructured OCR text. | **Craft Method & One-Shot Prompting:** A highly detailed **System Instruction** defines the exact output schema. A **few-Shot Example** (input ➞ perfect structured JSON) is provided in the prompt payload to train the model instantly on the expected structure, improving parsing reliability. |
+| **Guardrail/Validation** | **Goal:** Prevent AI **hallucination** (fabricating results not in the original report). | **Validation Check:** The system runs a programmatic check comparing the normalized tests against the original raw text and fallback to LLM. The LLM is used in this stage to define boundaries and flags for suspicious content. If the check fails, the pipeline returns a specific `unprocessed` status. |
+| **Summarization** | **Goal:** Translate technical data into patient-friendly language. | **Role-Fixing & one-Shot:** The model's role is fixed as a "Patient Advocate/Educator." **one-Shot example** demonstrate the required tone (empathetic, non-diagnostic) and structure (summary + bulleted explanations), ensuring the output is safe and clear. |
 
 ---
+### ModeL Configuration
+
+generationConfig = {
+  temperature: 0.2,
+  topP: 0.8,
+  topK: 40,
+  maxOutputTokens: 8196,
+  responseMimeType: 'application/json',
+};
+### system Prompt:
+You are a highly skilled medical data normalization and summarization assistant.
+Your role is to accurately extract and correct laboratory test information from text.
+Always respond ONLY in valid JSON. Never include markdown, commentary, or code fences.
+Be precise, factual, and medically neutral.
+
 
 ##  Setup and Local Execution
 
