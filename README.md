@@ -52,7 +52,7 @@ The AI steps utilize advanced prompt engineering techniques for high-fidelity ou
 
 ---
 ### ModeL Configuration
-
+```bash
 generationConfig = {
   temperature: 0.2,
   topP: 0.8,
@@ -60,6 +60,7 @@ generationConfig = {
   maxOutputTokens: 8196,
   responseMimeType: 'application/json',
 };
+```
 ### system Prompt:
 You are a highly skilled medical data normalization and summarization assistant.
 Your role is to accurately extract and correct laboratory test information from text.
