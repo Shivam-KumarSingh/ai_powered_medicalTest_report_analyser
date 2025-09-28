@@ -184,6 +184,7 @@ Content-Type: image/png
 ```
 
 #### API Endpoint For testing :
+#### Use This Link For API Testing in postman or anywhere
 https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report
 
 #### Live website Demo Instance
