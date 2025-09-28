@@ -28,7 +28,9 @@ const processReport = async (req) => {
   // Step 3: Guardrail Implementation
   tracer.log('SERVICE', 'Step 3: Checking for hallucinations...');
   if (!checkHallucination(rawText, tests)) {
-    return { status: 'unprocessed', reason: 'hallucinated tests not present in input' };
+    const result = { status: 'unprocessed', reason: 'hallucinated tests not present in input' };
+    tracer.log('RESULT', `Final Output: ${JSON.stringify(result, null, 2)}`);
+    return result;
   }
 
   // Step 4: Summary Generation
@@ -36,8 +38,7 @@ const processReport = async (req) => {
   const { summary, explanations } = await generateSummary(tests);
 
   // Final Output
-  tracer.log('SERVICE', 'Pipeline complete. Assembling final output.');
-  return {
+  const finalOutput = {
     status: 'ok',
     tests,
     summary,
@@ -45,6 +46,10 @@ const processReport = async (req) => {
     confidence,
     normalizationConfidence,
   };
+
+  tracer.log('RESULT', `Final Output: ${JSON.stringify(finalOutput, null, 2)}`);
+
+  return finalOutput;
 };
 
 module.exports = { processReport };
