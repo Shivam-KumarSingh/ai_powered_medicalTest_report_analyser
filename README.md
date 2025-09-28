@@ -137,20 +137,6 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
 --form 'text="CBC: Hemoglobin 10.2 g/dL (Low), WBC 11,200 /uL (High)"'
 
 ```
-##### Https request
-```bash
-POST /api/simplify-report HTTP/1.1
-Host: ai-powered-medicaltest-report-analyser-yew7.onrender.com
-Content-Length: 182
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="text"
-
-CBC: Hemoglobin 10.2 g/dL (Low), WBC 11,200 /uL (High)
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
-
-```
 
 #### Test Output:
 ```bash
@@ -188,27 +174,14 @@ CBC: Hemoglobin 10.2 g/dL (Low), WBC 11,200 /uL (High)
 }
 ```
 
-### B. Sample Request 2: File Input (Testing OCR Pipeline)
+### B. Sample Request 2: File Input (Testing OCR Pipeline )
 ```bash
 
 curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report' \
 --form 'file=@"/home/shivam/Pictures/Screenshots/Screenshot from 2025-09-27 11-57-05.png"'
 
 ```
-##### Https request(replace file name )
-```bash
-POST /api/simplify-report HTTP/1.1
-Host: ai-powered-medicaltest-report-analyser-yew7.onrender.com
-Content-Length: 210
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="Screenshot from 2025-09-27 11-57-05.png"
-Content-Type: image/png
-
-(data)
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
-```
 #### Test Output:
 ```bash
 {
@@ -397,6 +370,21 @@ Content-Type: image/png
   "normalizationConfidence": "number (LLM confidence)"
 }
 ```
+###### If guardrail is triggered:
+```bash
+{
+  "status": "unprocessed",
+  "reason": "hallucinated tests not present in input"
+}
+```
+#### Guardrails & Error Handling
+###### Guardrails:
+
+Checks if all normalized test names are present in the raw input (substring or AI validation).
+If hallucination detected, returns status: "unprocessed".
+###### Error Handling:
+
+All errors return JSON with status: "error" and a descriptive message.
 
 #### API Endpoint For testing :
 #### Use This Link For API Testing in postman or anywhere
