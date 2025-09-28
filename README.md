@@ -110,6 +110,8 @@ Be precise, factual, and medically neutral.
 The entire application communicates via a single, multipurpose endpoint.
 
 ### Endpoint: `POST /api/simplify-report`
+### API Server Link:
+https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report
 
 Processes input (text or file) and returns the structured analysis.
 
@@ -153,7 +155,7 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
 }
 ```
 
-#### API Link :
+#### API Endpoint For testing :
 https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report
 
 #### Live website Demo Instance
