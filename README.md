@@ -140,6 +140,43 @@ CBC: Hemoglobin 10.2 g/dL (Low), WBC 11,200 /uL (High)
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ```
+
+#### Test Output:
+```bash
+{
+    "status": "ok",
+    "tests": [
+        {
+            "name": "Hemoglobin",
+            "value": 10.2,
+            "unit": "g/dL",
+            "status": "low",
+            "ref_range": {
+                "low": 12,
+                "high": 15
+            }
+        },
+        {
+            "name": "WBC",
+            "value": 11200,
+            "unit": "/uL",
+            "status": "high",
+            "ref_range": {
+                "low": 4000,
+                "high": 11000
+            }
+        }
+    ],
+    "summary": "Your results show a low hemoglobin level and a high white blood cell count.",
+    "explanations": [
+        "Low hemoglobin may relate to anemia.",
+        "High WBC can occur with infections."
+    ],
+    "confidence": 1,
+    "normalizationConfidence": 0.98
+}
+```
+
 ### B. Sample Request 2: File Input (Testing OCR Pipeline)
 ```bash
 
@@ -160,6 +197,173 @@ Content-Type: image/png
 
 (data)
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+```
+#### Test Output:
+```bash
+{
+    "status": "ok",
+    "tests": [
+        {
+            "name": "WBC NBT Count -EDTA",
+            "value": 6100,
+            "unit": "Cells / cu mm",
+            "status": "normal",
+            "ref_range": {
+                "low": 3500,
+                "high": 10000
+            }
+        },
+        {
+            "name": "NEUTROPHILS",
+            "value": 71,
+            "unit": "%",
+            "status": "normal",
+            "ref_range": {
+                "low": 12,
+                "high": 80
+            }
+        },
+        {
+            "name": "LYMPHOCYTES",
+            "value": 24,
+            "unit": "%",
+            "status": "normal",
+            "ref_range": {
+                "low": 10,
+                "high": 50
+            }
+        },
+        {
+            "name": "EOSINOPHILS",
+            "value": 5,
+            "unit": "%",
+            "status": "normal",
+            "ref_range": {
+                "low": 2,
+                "high": 6
+            }
+        },
+        {
+            "name": "MONOCYTES",
+            "value": 0,
+            "unit": "%",
+            "status": "low",
+            "ref_range": {
+                "low": 2,
+                "high": 10
+            }
+        },
+        {
+            "name": "BASOPHILS",
+            "value": 0,
+            "unit": "%",
+            "status": "normal",
+            "ref_range": {
+                "low": 0,
+                "high": 2
+            }
+        },
+        {
+            "name": "HAEMOGLOBIN",
+            "value": 14.3,
+            "unit": "gms/dl",
+            "status": "normal",
+            "ref_range": {
+                "low": 11.5,
+                "high": 16.5
+            }
+        },
+        {
+            "name": "RBC COUNT",
+            "value": 3.9,
+            "unit": "Millions/cu mm",
+            "status": "normal",
+            "ref_range": {
+                "low": 3.5,
+                "high": 5.5
+            }
+        },
+        {
+            "name": "PCV-HAEMATOCRIT",
+            "value": 40,
+            "unit": "%",
+            "status": "normal",
+            "ref_range": {
+                "low": 35,
+                "high": 55
+            }
+        },
+        {
+            "name": "MCV",
+            "value": 103,
+            "unit": "fl",
+            "status": "high",
+            "ref_range": {
+                "low": 75,
+                "high": 100
+            }
+        },
+        {
+            "name": "MCH",
+            "value": 36,
+            "unit": "pg",
+            "status": "high",
+            "ref_range": {
+                "low": 27,
+                "high": 32
+            }
+        },
+        {
+            "name": "MCHC",
+            "value": 35,
+            "unit": "%",
+            "status": "normal",
+            "ref_range": {
+                "low": 31,
+                "high": 38
+            }
+        },
+        {
+            "name": "PLATELET COUNT",
+            "value": 247000,
+            "unit": "cells.cu/mm",
+            "status": "normal",
+            "ref_range": {
+                "low": 130000,
+                "high": 400000
+            }
+        },
+        {
+            "name": "ESR 30 MINS",
+            "value": 3,
+            "unit": "mm/hr",
+            "status": "normal",
+            "ref_range": {
+                "low": 0,
+                "high": 15
+            }
+        },
+        {
+            "name": "ESR 60 MINS",
+            "value": 8,
+            "unit": "mm/hr",
+            "status": "normal",
+            "ref_range": {
+                "low": 0,
+                "high": 15
+            }
+        }
+    ],
+    "summary": "Your results show a low monocyte count, and high MCV and MCH levels.",
+    "explanations": [
+        "Low monocytes can sometimes be seen with certain infections or conditions affecting the bone marrow.",
+        "High MCV (mean corpuscular volume) means your red blood cells are larger than average, which can be due to various reasons like vitamin deficiencies.",
+        "High MCH (mean corpuscular hemoglobin) means your red blood cells contain more hemoglobin than average, often seen when MCV is also high."
+    ],
+    "confidence": 0.9,
+    "normalizationConfidence": 0.95
+}
+
 ```
 
 ### C. Expected JSON Response Schema (Success)
