@@ -80,7 +80,7 @@ Be precise, factual, and medically neutral.
 1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/Shivam-KumarSingh/ai_powered_medicalTest_report_analyser
-    
+    cd ai_powered_medicalTest_report_analyser
     ```
 
 2.  **Install Server & Client Dependencies:**
@@ -94,8 +94,19 @@ Be precise, factual, and medically neutral.
     npm run build
     cd ..
     ```
+3. **Configure Environment Variables:**
 
-3.  **Run Server:**
+##### Create a .env file in the root directory:
+```bash
+PORT=5500
+GEMINI_API_KEY=your_gemini_api_key
+GOOGLE_APPLICATION_CREDENTIALS= Path_To_cloud credentials
+GCP_PROJECT_ID=your_gcp_project_id
+GCP_PROJECT_LOCATION=your_gcp_project_location
+```
+
+
+4.  **Run Server:**
     Start the API server, which serves the compiled React client.
 
     ```bash
