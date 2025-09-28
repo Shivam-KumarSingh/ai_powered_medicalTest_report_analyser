@@ -126,7 +126,7 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
 --form 'text="CBC: Hemoglobin 10.2 g/dL (Low), WBC 11,200 /uL (High)"'
 
 ```
-##### Https request(replace file name )
+##### Https request
 ```bash
 POST /api/simplify-report HTTP/1.1
 Host: ai-powered-medicaltest-report-analyser-yew7.onrender.com
