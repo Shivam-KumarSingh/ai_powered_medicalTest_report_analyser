@@ -175,7 +175,7 @@ curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.co
 }
 ```
 
-### B. Sample Request 2: File Input (Testing OCR Pipeline )
+### B. Sample Request 2: File Input(Only Png/jpg) (Testing OCR Pipeline )
 ```bash
 
 curl --location 'https://ai-powered-medicaltest-report-analyser-yew7.onrender.com/api/simplify-report' \
